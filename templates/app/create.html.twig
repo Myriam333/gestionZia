@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formSalarie 'bootstrap_4_layout.html.twig' %}
+
+{% block body %} 
+<h1>
+{% if editMode %}
+Modifier les informations
+{% else %}
+Ajout d'un nouvel employé
+{% endif %}
+</h1>
+
+{{ form_start(formSalarie) }}
+
+{{ form_row(formSalarie.nom) }}
+{{ form_row(formSalarie.prenom) }}
+{{ form_row(formSalarie.telephone) }}
+{{ form_row(formSalarie.adresse) }}
+{{ form_row(formSalarie.email) }}
+{{ form_row(formSalarie.villeNaissance) }}
+{{ form_row(formSalarie.paysNaissance) }}
+{{ form_row(formSalarie.nationalite) }}
+{{ form_row(formSalarie.intitulePoste) }}
+{{ form_row(formSalarie.typePoste) }}
+{{ form_row(formSalarie.dureePoste) }}
+{{ form_row(formSalarie.horairesHebdo) }}
+{{ form_row(formSalarie.totalTeletravail) }}
+
+
+<button type="submit" class="btn btn-primary btn-lg btn-block">
+{% if editMode %}
+Enregistrer les modifications
+{% else %}
+Ajouter
+{% endif %}
+</button>
+
+{{ form_end(formSalarie) }}
+{% endblock %} 

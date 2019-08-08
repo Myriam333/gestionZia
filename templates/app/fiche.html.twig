@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card mb-3">
+        <h3 class="card-header bg-succes font-weight-bold text-center">{{ salarie.nom }},
+            {{ salarie.prenom }}</h3>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="card-text">
+                    <p>Informations personnelles :</p>
+                </div>
+                <p>Telephone :
+                    {{ salarie.telephone }}</p>
+                <p>Adresse :
+                    {{ salarie.adresse }}
+                </p>
+                <p>Email :
+                    {{ salarie.email }}
+                </p>
+                <p>Né(e) à
+                    {{salarie.villeNaissance}},
+                    {{salarie.paysNaissance}}.</p>
+                <p>Nationalité :
+                    {{salarie.nationalite}}</p>
+            </li>
+            <li class="list-group-item">
+                <div class="card-text">
+                    <p>Informations professionnelles :</p>
+                </div>
+                <p>Poste :
+                    {{ salarie.intitulePoste }}</p>
+                <p>{{ salarie.typePoste }}
+                    :
+                    {{ salarie.dureePoste }}
+                    Mois</p>
+                <p>Horaires
+                    {{salarie.horairesHebdo}}H/Semaine</p>
+                <p>Teletravail:
+                    {{salarie.totalTeletravail}}
+                    J/Mois</p>
+            </li>
+        </ul>
+        <a href="{{ path('edit', {'id': salarie.id}) }}" class="btn btn-primary">Modifier les Informations</a>
+        <a href="{{ path('supprimer', {'id': salarie.id}) }}" class="btn btn-primary">Supprimer ce salarié</a>
+    </div>
+</div>
+<div class="container">
+    <div class="card mb-3">
+        <h3 class="card-header bg-succes font-weight-bold text-center">Absences</h3>
+        <li class="list-group-item">
+            {% for absence in salarie.absences %}
+                <p>Absence : du
+                    {{ absence.debut }}
+                    au
+                    {{ absence.fin }}
+                    inclus.</p>
+            {% endfor %}
+        </li>
+    </div>
+</div>
+<div class="container">
+    <div class="card mb-3">
+        <h5 class="card-header bg-succes font-weight-bold text-center">Declarer une absence</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="card-body">
+                    {{ form_start(absenceForm) }}
+                    {{ form_row(absenceForm.debut)}}
+                    {{ form_row(absenceForm.fin)}}
+                    <button type="submit" class="btn btn-primary">Declarer l'absence</button>
+                    {{ form_end(absenceForm)  }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

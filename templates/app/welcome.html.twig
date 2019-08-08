@@ -1,0 +1,26 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %} 
+<br><br><hr>
+<div class="alert" role="alert">
+    <div class="row justify-content-center">
+        <div class="col-6 col-md-4">
+            <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+                <div class="card-header">Connexion</div>
+                <div class="card-body">
+                    <a type="submit" href="connexion" class="btn btn-light btn-lg btn-block">Se connecter<br></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Inscription</div>
+                    <div class="card-body">
+                        <a type="submit" href="inscription" class="btn btn-light btn-lg btn-block">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><hr>
+</div>
+{% endblock %}

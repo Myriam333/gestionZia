@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a
+        type="button"
+        class="btn btn-primary btn-lg btn-block"
+        href="{{ path('create')}}">Ajouter un employé
+    </a><br>
+    <div class="card mb-3">
+        <div class="card-header text-center">
+            <i class="fas fa-table"></i>
+            Liste des employés
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Poste</th>
+                            <th>Fiche</th>
+                        </tr>
+                    </thead>
+                    {% for salarie in salaries %}
+                        <tbody>
+                            <tr>
+                                <th>{{ salarie.nom }}</th>
+                                <td>{{ salarie.prenom }}</td>
+                                <td>{{ salarie.intitulePoste }}</td>
+                                <td>
+                                    <a
+                                        href="{{ path('fiche', {'id': salarie.id}) }}"
+                                        class="btn btn-primary btn-block">Voir</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted"></div>
+    </div>
+{% endblock %}
